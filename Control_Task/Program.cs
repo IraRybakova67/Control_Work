@@ -5,47 +5,39 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-int CountLenghtArray(string[] array)
-{
-    int count = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i].Length <= 3) count++;
-    }
-    return count;
-}
-
-int GetInput(string text)
-{
-    Console.Write(text);
-    return Convert.ToInt32(Console.ReadLine());
-}
-int size = GetInput("Введите размер массива: ");
+Console.WriteLine("Введите размер массива:");
+int size = Convert.ToInt32(Console.ReadLine());
 
 string[] array = new string[size];
+
 Console.WriteLine("Введите строки массива:");
-Console.WriteLine();
 
 for (int i = 0; i < size; i++)
 {
     Console.Write($"Строка {i + 1}: ");
     array[i] = Console.ReadLine();
 }
-int count = CountLenghtArray(array);
-string[] GenerateNewArray(string[] array)
+
+for (int i = 0; i < size; i++)
 {
-    string[] newarray = new string[count];
-    int j = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i].Length <= 3)
-        {
-            newarray[j] = array[i];
-            j++;
-        }
-    }
-    return newarray;
+    Console.WriteLine($"Строка {i + 1}: {array[i]}");
 }
-string[] newarray = GenerateNewArray(array);
+
+int count = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= 3) count++;
+}
+string[] newarray = new string[count];
+int j = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= 3)
+    {
+        newarray[j] = array[i];
+        j++;
+    }
+}
+Console.WriteLine($"[{string.Join(", ", array)}] -> [{string.Join(", ", newarray)}]");
 Console.WriteLine();
 Console.WriteLine($"[{string.Join(", ", array)}] -> [{string.Join(", ", newarray)}]");
